@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Login — Cyber Incident System</title>
+</head>
+<body style="font-family: Arial; background: #0f0f1a; color: #cdd6f4; display: flex; justify-content: center; align-items: center; height: 100vh; margin: 0;">
+
+    <div style="background: #1e1e2e; padding: 40px; border-radius: 8px; width: 300px; border: 1px solid #45475a;">
+        <h2 style="color: #89b4fa">🔐 Secure Login</h2>
+        
+        <form method="POST">
+            {% csrf_token %}
+            
+            {{ form.as_p }}
+            
+            <button type="submit" style="background: #89b4fa; color: #1e1e2e; padding: 10px 24px; border: none; border-radius: 4px; width: 100%; font-weight: bold;">
+                Login
+            </button>
+        </form>
+    </div>
+
+</body>
+</html>

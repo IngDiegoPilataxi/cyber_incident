@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Register | CyberLab</title>
+    <style>
+        body { background-color: #121212; color: #e0e0e0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; display: flex; flex-direction: column; align-items: center; margin-top: 50px; }
+        h1 { color: #ffffff; }
+        form { background-color: #1e1e1e; padding: 30px; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.3); width: 350px; }
+        input, select { width: 100%; padding: 8px; margin-bottom: 15px; border: 1px solid #333; border-radius: 4px; background-color: #2d2d2d; color: #ffffff; box-sizing: border-box; }
+        button { width: 100%; padding: 10px; background-color: #03dac6; color: #000000; border: none; border-radius: 4px; font-weight: bold; cursor: pointer; }
+        button:hover { background-color: #01bca6; }
+        a { color: #bb86fc; text-decoration: none; }
+    </style>
+</head>
+<body>
+    <h1>Create Account</h1>
+    <form method='POST'>
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type='submit'>Register</button>
+    </form>
+    <p>Already have an account? <a href='{% url "accounts:login" %}'>Login</a></p>
+</body>
+</html>

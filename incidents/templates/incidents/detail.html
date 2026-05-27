@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Incident Detail | CyberLab</title>
+    <style>
+        body { background-color: #0d0d0d; color: #f5f5f5; font-family: 'Segoe UI', sans-serif; padding: 30px; display: flex; justify-content: center;}
+        .card { background-color: #1a1a1a; padding: 30px; border-radius: 8px; border: 1px solid #333; width: 100%; max-width: 600px; box-shadow: 0 4px 10px rgba(0,0,0,0.5); }
+        h1 { color: #bb86fc; margin-top: 0; }
+        .badge { background-color: #cf6679; color: black; padding: 5px 10px; border-radius: 4px; font-weight: bold; font-size: 12px; text-transform: uppercase; }
+        a { color: #03dac6; text-decoration: none; display: inline-block; margin-top: 20px; }
+        a:hover { text-decoration: underline; }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <h1>{{ incident.title }}</h1>
+        <p><span class="badge">{{ incident.severity }}</span></p>
+        <p><strong>Reported by:</strong> {{ incident.reported_by.username|default:"Unknown" }}</p>
+        <p><strong>Date:</strong> {{ incident.reported_at }}</p>
+        <hr style="border: 0; border-top: 1px solid #333; margin: 20px 0;">
+        <p><strong>Description:</strong><br> {{ incident.description }}</p>
+        
+        <a href="{% url 'incidents:home' %}">← Back to Dashboard</a>
+    </div>
+</body>
+</html>

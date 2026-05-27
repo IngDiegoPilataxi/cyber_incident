@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Login | CyberLab</title>
+    <style>
+        body { background-color: #121212; color: #e0e0e0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; display: flex; flex-direction: column; align-items: center; margin-top: 50px; }
+        h1 { color: #ffffff; }
+        form { background-color: #1e1e1e; padding: 30px; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.3); width: 300px; }
+        label { display: block; margin-bottom: 8px; color: #aaaaaa; }
+        input { width: 100%; padding: 10px; margin-bottom: 20px; border: 1px solid #333; border-radius: 4px; background-color: #2d2d2d; color: #ffffff; box-sizing: border-box; }
+        button { width: 100%; padding: 10px; background-color: #bb86fc; color: #000000; border: none; border-radius: 4px; font-weight: bold; cursor: pointer; transition: background-color 0.2s; }
+        button:hover { background-color: #9965f4; }
+        a { color: #03dac6; text-decoration: none; }
+        a:hover { text-decoration: underline; }
+        .error { color: #cf6679; margin-bottom: 15px; font-weight: bold; }
+    </style>
+</head>
+<body>
+    <h1>CyberLab Login</h1>
+    {% if error %}
+        <p class="error">{{ error }}</p>
+    {% endif %}
+    <form method='POST'>
+        {% csrf_token %}
+        <label>Username:</label>
+        <input type='text' name='username' required>
+        
+        <label>Password:</label>
+        <input type='password' name='password' required>
+        
+        <button type='submit'>Login</button>
+    </form>
+    <p>No account? <a href='{% url "accounts:register" %}'>Register here</a></p>
+</body>
+</html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Dashboard | CyberLab</title>
+    <style>
+        body { background-color: #121212; color: #e0e0e0; font-family: sans-serif; padding: 20px; }
+        a { color: #03dac6; }
+    </style>
+</head>
+<body>
+    <h1>My Dashboard</h1>
+    <p>Username: {{ profile.user.username }}</p>
+    <p>Role: {{ profile.role|title }}</p>
+
+    <h2>Incidents I've Reported:</h2>
+    <ul>
+        {% for incident in incidents %}
+            <li>{{ incident.title }} - {{ incident.reported_at }}</li>
+        {% empty %}
+            <li>You haven't reported any incidents yet.</li>
+        {% endfor %}
+    </ul>
+    
+    <br>
+    <a href="{% url 'incidents:home' %}">Back to Incident List</a>
+</body>
+</html>

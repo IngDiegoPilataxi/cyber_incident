@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Delete Incident | CyberLab</title>
+    <style>
+        body { background-color: #0d0d0d; color: #f5f5f5; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; padding: 50px; display: flex; flex-direction: column; align-items: center; text-align: center; }
+        h1 { color: #cf6679; text-transform: uppercase; }
+        .warning-box { background-color: #1a1a1a; padding: 30px; border-radius: 8px; border: 1px solid #cf6679; max-width: 400px; box-shadow: 0 8px 16px rgba(207, 102, 121, 0.2); }
+        button { padding: 12px 24px; background-color: #cf6679; color: #000; border: none; border-radius: 4px; font-weight: bold; cursor: pointer; text-transform: uppercase; margin-top: 20px; }
+        button:hover { background-color: #b33951; }
+        a { color: #03dac6; text-decoration: none; display: inline-block; margin-left: 15px; }
+        a:hover { text-decoration: underline; }
+    </style>
+</head>
+<body>
+    <div class="warning-box">
+        <h1>Critical Warning</h1>
+        <p>Are you absolutely sure you want to permanently delete the incident: <strong>"{{ incident.title }}"</strong>?</p>
+        <p>This action cannot be undone.</p>
+        
+        <form method="POST">
+            {% csrf_token %}
+            <button type="submit">Yes, Delete It</button>
+            <a href="{% url 'incidents:home' %}">Cancel</a>
+        </form>
+    </div>
+</body>
+</html>

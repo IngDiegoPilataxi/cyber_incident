@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit Incident | CyberLab</title>
+    <style>
+        body { background-color: #0d0d0d; color: #f5f5f5; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; padding: 30px; display: flex; flex-direction: column; align-items: center; }
+        h1 { color: #bb86fc; text-transform: uppercase; letter-spacing: 1px; }
+        form { background-color: #1a1a1a; padding: 30px; border-radius: 8px; box-shadow: 0 8px 16px rgba(0,0,0,0.5); width: 100%; max-width: 400px; border: 1px solid #333; }
+        input, select, textarea { width: 100%; padding: 10px; margin-bottom: 20px; border: 1px solid #444; border-radius: 4px; background-color: #262626; color: #ffffff; box-sizing: border-box; }
+        input:focus, select:focus, textarea:focus { outline: none; border-color: #bb86fc; }
+        button { width: 100%; padding: 12px; background-color: #03dac6; color: #000; border: none; border-radius: 4px; font-weight: bold; cursor: pointer; text-transform: uppercase; transition: background-color 0.3s; }
+        button:hover { background-color: #01bca6; }
+        a { color: #cf6679; text-decoration: none; display: inline-block; margin-top: 20px; }
+        a:hover { text-decoration: underline; }
+    </style>
+</head>
+<body>
+    <h1>Edit Incident #{{ incident.id }}</h1>
+    <form method='POST'>
+        {% csrf_token %}
+        
+        <label>Title:</label>
+        <input type="text" name="title" value="{{ incident.title }}" required>
+        
+        <label>Description:</label>
+        <textarea name="description" required>{{ incident.description }}</textarea>
+        
+        <label>Severity:</label>
+        <select name="severity">
+            <option value="low" {% if incident.severity == 'low' %}selected{% endif %}>Low</option>
+            <option value="medium" {% if incident.severity == 'medium' %}selected{% endif %}>Medium</option>
+            <option value="high" {% if incident.severity == 'high' %}selected{% endif %}>High</option>
+            <option value="critical" {% if incident.severity == 'critical' %}selected{% endif %}>Critical</option>
+        </select>
+        
+        <button type='submit'>Update Incident</button>
+    </form>
+    <a href="{% url 'incidents:home' %}">← Back to Dashboard</a>
+</body>
+</html>
